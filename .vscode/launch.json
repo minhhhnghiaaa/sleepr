@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Start Development Server (NestJS)",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "/opt/homebrew/bin/nest",
+      "args": [
+        "start",
+        "--debug=9229",
+        "--watch"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "preLaunchTask": "use nvm 22" 
+    }
+  ],
+  "tasks": [ 
+    {
+      "label": "use nvm 22", 
+      "type": "shell",
+      "command": ". ~/.nvm/nvm.sh && nvm use 22",
+      "problemMatcher": [] 
+    }
+  ]
+}

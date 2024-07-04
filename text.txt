@@ -17,3 +17,6 @@ nest g co users => auth
 nest g s users => auth
 
 pnpm i @nestjs/passport passport passport-local
+pnpm i -D @types/passport-local
+pnpm i @nestjs/jwt passport-jwt
+pnpm i -D @types/passport-jwt

@@ -18,5 +18,6 @@ import {
   ],
   controllers: [ReservationsController],
   providers: [ReservationsService, ReservationsRepository],
+  exports: [ReservationsService],
 })
 export class ReservationsModule {}

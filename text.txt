@@ -7,3 +7,6 @@ nest g app reservations
 pnpm i class-validator class-transformer
 pnpm i nestjs-pino pino-http pino-pretty
 nest g mo logger
+
+docker build ../../ -f Dockerfile -t sleepr_reservations
+docker-compose up

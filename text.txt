@@ -1,5 +1,9 @@
+sudo kill -9 $(lsof -ti:8212)
 nest g library common
 nest generate module database -p common 
 nest generate module config -p common
 mongod --dbpath /opt/homebrew/var/mongodb
 nest g app reservations
+pnpm i class-validator class-transformer
+pnpm i nestjs-pino pino-http pino-pretty
+nest g mo logger

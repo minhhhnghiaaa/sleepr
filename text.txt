@@ -10,3 +10,10 @@ nest g mo logger
 
 docker build ../../ -f Dockerfile -t sleepr_reservations
 docker-compose up
+
+nest g app auth
+nest g mo users => auth
+nest g co users => auth
+nest g s users => auth
+
+pnpm i @nestjs/passport passport passport-local

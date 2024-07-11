@@ -20,3 +20,7 @@ pnpm i @nestjs/passport passport passport-local
 pnpm i -D @types/passport-local
 pnpm i @nestjs/jwt passport-jwt
 pnpm i -D @types/passport-jwt
+
+-- pnpm i bcrypt
+pnpm i -D @types/bcryptjs 
+pnpm i bcryptjs express

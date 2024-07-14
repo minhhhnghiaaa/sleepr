@@ -7,6 +7,12 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
 
   constructor(protected readonly model: Model<TDocument>) {}
 
+  /**
+   * Creates a new document in the database.
+   *
+   * @param {Omit<TDocument, '_id'>} document - The document data to be created, excluding the '_id' field.
+   * @return {Promise<TDocument>} The created document.
+   */
   async create(document: Omit<TDocument, '_id'>): Promise<TDocument> {
     const createdDocument = new this.model({
       ...document,
@@ -16,6 +22,12 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
     return (await createdDocument.save()).toJSON() as unknown as TDocument;
   }
 
+  /**
+   * Finds and returns a single document based on the provided filter query.
+   *
+   * @param {FilterQuery<TDocument>} filterQuery - The filter query to search for the document.
+   * @return {Promise<TDocument>} The found document.
+   */
   async findOne(filterQuery: FilterQuery<TDocument>): Promise<TDocument> {
     const document = await this.model
       .findOne(filterQuery)
@@ -28,6 +40,14 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
     return document;
   }
 
+  /**
+   * Finds and updates a single document based on the provided filter query, and returns the updated document.
+   *
+   * @param {FilterQuery<TDocument>} filterQuery - The filter query to search for the document.
+   * @param {UpdateQuery<TDocument>} update - The update query to apply to the found document.
+   * @return {Promise<TDocument>} The updated document.
+   * @throws {NotFoundException} If the document is not found.
+   */
   async findOneAndUpdate(
     filterQuery: FilterQuery<TDocument>,
     update: UpdateQuery<TDocument>,
@@ -42,10 +62,22 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
     return document;
   }
 
+  /**
+   * Finds and returns a list of documents based on the provided filter query.
+   *
+   * @param {FilterQuery<TDocument>} filterQuery - The filter query to search for the documents.
+   * @return {Promise<TDocument[]>} The list of found documents.
+   */
   async find(filterQuery: FilterQuery<TDocument>): Promise<TDocument[]> {
     return this.model.find(filterQuery).lean<TDocument[]>(true);
   }
 
+  /**
+   * Finds and deletes a single document based on the provided filter query.
+   *
+   * @param {FilterQuery<TDocument>} filterQuery - The filter query to search for the document to delete.
+   * @return {Promise<TDocument>} The deleted document.
+   */
   async findOneAndDelete(
     filterQuery: FilterQuery<TDocument>,
   ): Promise<TDocument> {

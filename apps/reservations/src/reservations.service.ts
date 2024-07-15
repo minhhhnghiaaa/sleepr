@@ -8,11 +8,18 @@ export class ReservationsService {
   constructor(
     private readonly reservationsRepository: ReservationsRepository,
   ) {}
-  create(createReservationDto: CreateReservationDto) {
+  /**
+   * Creates a new reservation using the provided `createReservationDto` and `userId`.
+   *
+   * @param {CreateReservationDto} createReservationDto - The data for the new reservation.
+   * @param {string} userId - The ID of the user creating the reservation.
+   * @return {Promise<Reservation>} A Promise that resolves to the newly created reservation.
+   */
+  create(createReservationDto: CreateReservationDto, userId: string) {
     return this.reservationsRepository.create({
       ...createReservationDto,
       timestamp: new Date(),
-      userId: '123',
+      userId,
     });
   }
 

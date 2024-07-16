@@ -29,3 +29,6 @@ pnpm i cookie-parser
 pnpm i -D @types/cookie-parser
 
 pnpm i -D @types/express
+
+nest g app payments
+pnpm i stripe

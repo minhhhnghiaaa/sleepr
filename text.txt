@@ -34,3 +34,6 @@ nest g app payments
 pnpm i stripe
 
 nest g app notifications
+
+pnpm add -g pnpm
+pnpm i -D @types/nodemailer
